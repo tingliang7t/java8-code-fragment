@@ -33,4 +33,17 @@ public class CodeFragment {
         });
     }
 
+    /*** count Occurrence ****/
+    //@ bug if  value is null
+    public static <T> long countOccurrence(T[] lists, Object value){
+
+        if (null == lists || lists.length == 0){
+            return 0;
+        }
+
+        return Arrays.stream(lists)
+                     .filter( e->lists.equals(value))
+                     .count();
+    }
+
 }
