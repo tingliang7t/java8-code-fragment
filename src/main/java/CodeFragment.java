@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import jdk.nashorn.internal.objects.NativeNumber;
 import jdk.nashorn.internal.runtime.JSONFunctions;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -104,6 +105,29 @@ public class CodeFragment {
         }
 
         return IntStream.range(0, numbers.length).filter(i->numbers[i] == target).findFirst().orElse(-1);
+
+    }
+
+
+
+    public static void main(String[] args){
+
+        Map<Integer, List<Number>> data = Maps.newHashMap();
+
+        data.put(1, Arrays.asList(11438153,4345263,6222578,5318395,7368509,8262842,11488945,5391331,10817293,9431141));
+        data.put(2, Arrays.asList(6921828,11357733,9742429,6242373,12709451,6809101,8980905));
+        data.put(3, Arrays.asList(8083273));
+        data.put(4, Arrays.asList(13538117,13552619,9444174,11540839,13552375,13634707,6345511,5848755,6371614));
+        data.put(5, Arrays.asList(4854448,8274153,5652948));
+
+        String jsonString = JSON.toJSONString(data);
+        System.out.println(jsonString);
+
+        Map<Integer, List<Long>> idToAlbumIdMap = JSON.parseObject(jsonString, Map.class);
+
+        System.out.println(idToAlbumIdMap.get(1).get(0));
+
+        return;
 
     }
 
